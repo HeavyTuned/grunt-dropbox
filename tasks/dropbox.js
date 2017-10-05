@@ -46,8 +46,9 @@ module.exports = function (grunt) {
   function createUploadPromise(filepath, destination, options) {
     return function () {
       // get the name of the file and construct the url for uploading it
+
       var filename = getFilename(filepath),
-        dropboxPath = destination + (options.version_name ? ("/" + options.version_name + "/") : "/") + filename,
+        dropboxPath = "/" + destination + (options.version_name ? ("/" + options.version_name + "/") : "/") + filename,
         // read the file and start the upload, decrementing the in-flight count when complete
         // Use encoding = null to keep the file as a Buffer
         reqOptions = {
